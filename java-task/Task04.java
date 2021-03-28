@@ -11,7 +11,7 @@ public class Task04 {
     float bmi = weight / (height / 100) / (height / 100);
     if (bmi < 18.5) {
       System.out.println("やせ");
-    } else if (bmi >= 18.5 && bmi <= 24.9) {
+    } else if (bmi <= 24.9) {
       System.out.println("標準");
     } else if (bmi >= 25 && bmi < 30) {
       System.out.println("肥満");
