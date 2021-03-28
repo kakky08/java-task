@@ -10,15 +10,15 @@ public class Task08 {
 
         if (i <= 5) {
           if (k < cal && k > mas) {
-            System.out.print("■");
+            System.out.print("■ ");
           } else {
-            System.out.print("◇");
+            System.out.print("◇ ");
           }
         } else if (i > 5) {
           if (k < cal && k > mas) {
-            System.out.print("■");
+            System.out.print("■ ");
           } else {
-            System.out.print("◇");
+            System.out.print("◇ ");
           }
         }
       }
