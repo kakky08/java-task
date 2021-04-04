@@ -15,20 +15,27 @@ public class Player implements ActionListener {
   private static int count = 0;
   private static int count2 = 0;
   public static Boolean bool = false;
+  // (おみくじ)ボタンの変数設定
   public static JButton omikuji;
+  // (グー)ボタンの変数設定
+  public static JButton rock;
+  // (チョキ)ボタンの変数設定
+  public static JButton scissors;
+  // (パー)ボタンの変数設定
+  public static JButton paper;
 
   /* == ボタンの作成 == */
   public static void createButton(JPanel playerPanel) {
     // (グー)ボタン
-    JButton rock = new JButton("グー");
+    rock = new JButton("グー");
     rock = setButton(rock);
     playerPanel.add(rock, BorderLayout.WEST);
     // (チョキ)ボタン
-    JButton scissors = new JButton("チョキ");
+    scissors = new JButton("チョキ");
     scissors = setButton(scissors);
     playerPanel.add(scissors, BorderLayout.CENTER);
     // (パー)ボタン
-    JButton paper = new JButton("パー");
+    paper = new JButton("パー");
     paper = setButton(paper);
     playerPanel.add(paper, BorderLayout.EAST);
 
@@ -59,6 +66,12 @@ public class Player implements ActionListener {
 
   public static void OmikujiBool(Boolean bool) {
     omikuji.setEnabled(bool);
+  }
+
+  public static void end(Boolean bool) {
+    rock.setEnabled(bool);
+    scissors.setEnabled(bool);
+    paper.setEnabled(bool);
   }
 
   /* == おみくじボタンの配置、各種設定 == */
@@ -100,12 +113,19 @@ public class Player implements ActionListener {
       Panel.resultLabel.setText("勝ち :" + count + "回目の勝利");
       if (count == 3) {
         Player.OmikujiBool(true);
+        count = 0;
       }
     } else {
       count2 += 1;
       Panel.resultLabel.setText("負け :" + count2 + "回目の負け");
+      /* == ３回負けたらゲーム終了 == */
+      if (count2 == 3) {
+        Player.end(false);
+        Panel.resultLabel.setText("Game Over");
+      }
     }
 
+    /* == 3回勝ったらおみくじが引ける == */
     if (omikuziResult == 1) {
       Random ran = new Random();
       int ra = ran.nextInt(12) + 1;
