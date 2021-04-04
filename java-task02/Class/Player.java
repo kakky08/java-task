@@ -9,6 +9,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.util.Random;
+
 public class Player implements ActionListener {
   private static int count = 0;
   private static int count2 = 0;
@@ -75,12 +77,15 @@ public class Player implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     String command = e.getActionCommand();
     int playerHand = 0;
+    int omikuziResult = 0;
     if (command.equals("グー")) {
       playerHand = 1;
     } else if (command.equals("チョキ")) {
       playerHand = 2;
     } else if (command.equals("パー")) {
       playerHand = 3;
+    } else if (command.equals("おみくじを引く")) {
+      omikuziResult = 1;
     }
 
     int playerHandTemp = playerHand;
@@ -101,5 +106,13 @@ public class Player implements ActionListener {
       Panel.resultLabel.setText("負け :" + count2 + "回目の負け");
     }
 
+    if (omikuziResult == 1) {
+      Random ran = new Random();
+      int ra = ran.nextInt(12) + 1;
+      Omikuzi.CPUHand(ra);
+      Panel.resultLabel.setText("おみくじの結果は・・・");
+      Player.OmikujiBool(false);
+      omikuziResult = 0;
+    }
   }
 }
