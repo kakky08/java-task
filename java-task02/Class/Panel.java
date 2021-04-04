@@ -55,8 +55,9 @@ public class Panel {
     Dimension player = new Dimension(400, 50);
     JPanel playerPanel = setPanel(Color.WHITE, player);
 
-    // ボタンを代入
+    // ジャンケンボタンを代入
     Player.createButton(playerPanel);
+    Player.end(true);
 
     // パネルの位置を設定
     frame.add(playerPanel, BorderLayout.SOUTH);

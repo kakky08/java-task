@@ -1,6 +1,6 @@
 package Class;
 
-import java.util.Random;
+// import java.util.Random;
 
 /*== おみくじの結果を設定 ==*/
 public class Omikuzi {
